@@ -7,10 +7,13 @@ const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
+  // Function to convert cost from string to number
+  const parseCost = (cost) => parseFloat(cost);
+
   const calculateTotalAmount = () => {
     let totalAmount = 0;
     cart.forEach(item => {
-      totalAmount += item.cost * item.quantity;
+      totalAmount += parseCost(item.cost) * item.quantity; // Convert cost to number
     });
     return totalAmount.toFixed(2);
   };
@@ -37,7 +40,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const calculateTotalCost = (item) => {
-    return (item.cost * item.quantity).toFixed(2);
+    return (parseCost(item.cost) * item.quantity).toFixed(2); // Convert cost to number
   };
 
   return (
@@ -49,7 +52,7 @@ const CartItem = ({ onContinueShopping }) => {
             <img className="cart-item-image" src={item.image} alt={item.name} />
             <div className="cart-item-details">
               <div className="cart-item-name">{item.name}</div>
-              <div className="cart-item-cost">${item.cost.toFixed(2)}</div>
+              <div className="cart-item-cost">${parseCost(item.cost).toFixed(2)}</div> {/* Convert and format cost */}
               <div className="cart-item-quantity">
                 <button
                   className="cart-item-button cart-item-button-dec"
@@ -83,6 +86,8 @@ const CartItem = ({ onContinueShopping }) => {
 };
 
 export default CartItem;
+
+
 
 
 
