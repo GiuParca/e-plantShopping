@@ -8,6 +8,13 @@ import snakePlantImg from './images/snake-plant.jpg';
 import monsteraImg from './images/monstera-adansonii.jpg';
 import peaceLilyImg from './images/peace-lily.jpg';
 import bostonFernImg from './images/boston-fern.jpg';
+import aloeVeraImg from './images/aloe-vera.jpg';
+import rubberPlantImg from './images/rubber-plant.jpg';
+import jasmineImg from './images/jasmine.jpg';
+import lavenderImg from './images/lavender.jpg';
+import rosemaryImg from './images/rosemary.jpg';
+import hyacinthImg from './images/hyacinth.jpg';
+import lemonBalmImg from './images/lemon-balm.jpg';
 
 function ProductList() {
     const dispatch = useDispatch();
@@ -24,7 +31,7 @@ function ProductList() {
                 {
                     name: "Snake Plant",
                     image: snakePlantImg,
-                    description: "Produces oxygen at night, improving air quality.",
+                    description: "Produces oxygen, improves air quality.",
                     cost: "$15"
                 },
                 {
@@ -47,13 +54,13 @@ function ProductList() {
                 },
                 {
                     name: "Rubber Plant",
-                    image: "https://cdn.pixabay.com/photo/2020/02/15/11/49/flower-4850729_1280.jpg",
+                    image: rubberPlantImg,
                     description: "Easy to care for and effective at removing toxins.",
                     cost: "$17"
                 },
                 {
                     name: "Aloe Vera",
-                    image: "https://cdn.pixabay.com/photo/2018/04/02/07/42/leaf-3283175_1280.jpg",
+                    image: aloeVeraImg,
                     description: "Purifies the air and has healing properties for skin.",
                     cost: "$14"
                 }
@@ -64,19 +71,19 @@ function ProductList() {
             plants: [
                 {
                     name: "Lavender",
-                    image: "https://images.unsplash.com/photo-1611909023032-2d6b3134ecba?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    image: lavenderImg,
                     description: "Calming scent, used in aromatherapy.",
                     cost: "$20"
                 },
                 {
                     name: "Jasmine",
-                    image: "https://images.unsplash.com/photo-1592729645009-b96d1e63d14b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    image: jasmineImg,
                     description: "Sweet fragrance, promotes relaxation.",
                     cost: "$18"
                 },
                 {
                     name: "Rosemary",
-                    image: "https://cdn.pixabay.com/photo/2019/10/11/07/12/rosemary-4541241_1280.jpg",
+                    image: rosemaryImg,
                     description: "Invigorating scent, often used in cooking.",
                     cost: "$15"
                 },
@@ -88,13 +95,13 @@ function ProductList() {
                 },
                 {
                     name: "Lemon Balm",
-                    image: "https://cdn.pixabay.com/photo/2019/09/16/07/41/balm-4480134_1280.jpg",
+                    image: lemonBalmImg,
                     description: "Citrusy scent, relieves stress and promotes sleep.",
                     cost: "$14"
                 },
                 {
                     name: "Hyacinth",
-                    image: "https://cdn.pixabay.com/photo/2019/04/07/20/20/hyacinth-4110726_1280.jpg",
+                    image: hyacinthImg,
                     description: "Hyacinth is a beautiful flowering plant known for its fragrant.",
                     cost: "$22"
                 }
@@ -274,21 +281,17 @@ function ProductList() {
 
     return (
         <div>
-            <div className="navbar" style={styleObj}>
+            <div id="navbar" style={styleObj}>
                 <div className="tag">
                     <div className="luxury">
-                        <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
                         <a href="/" style={{ textDecoration: 'none' }}>
-                            <div>
-                                <h3 style={{ color: 'white' }}>Paradise Nursery</h3>
-                                <i style={{ color: 'white' }}>Where Green Meets Serenity</i>
-                            </div>
+                        <img id='logo' src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
                         </a>
                     </div>
                 </div>
                 <div style={styleObjUl}>
-                    <div><a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a></div>
-                    <div><a href="#" onClick={(e) => handleCartClick(e)} style={styleA}><h1 className='cart'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68"><rect width="156" height="156" fill="none"></rect><circle cx="80" cy="216" r="12"></circle><circle cx="184" cy="216" r="12"></circle><path d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8" fill="none" stroke="#faf9f9" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" id="mainIconPathAttribute"></path></svg></h1></a></div>
+                    <div className='link-nav'><a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a></div>
+                    <div><a href="#" onClick={(e) => handleCartClick(e)} style={styleA}><h1 className='cart'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="50" width="50"><rect width="50" height="50" fill="#fff"></rect><circle cx="80" cy="216" r="12"></circle><circle cx="184" cy="216" r="12"></circle><path d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8" fill="none" stroke="#faf9f9" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" id="mainIconPathAttribute"></path></svg></h1></a></div>
                     <span className="cart-quantity">{totalQuantity}</span> 
                 </div>
             </div>
@@ -296,7 +299,7 @@ function ProductList() {
                 <div className="product-grid">
                     {plantsArray.map((category, index) => (
                         <div key={index}>
-                            <h1><div>{category.category}</div></h1>
+                            <h1 class="category-title" ><div>{category.category}</div></h1>
                             <div className='product-list'>
                                 {category.plants.map((plant, plantIndex) => (
                                     <div className='product-cart' key={plantIndex}>

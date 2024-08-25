@@ -1,19 +1,16 @@
-/* Reset some default styles */
 body, h1, ul {
     margin: 0;
     padding: 0;
 }
 
-/* Set a background color */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
 
-/* Navbar */
-.navbar {
-    background-color: #4CAF50;
-    color: #fff!important;
+#navbar {
+    background-color: #304337 !important;
+    color: #fff;
     padding: 15px;
     display: flex;
     justify-content: space-between;
@@ -32,9 +29,21 @@ body {
     margin-right: 30px;
 }
 
+#logo{
+    height: 50px;
+    width: 50px;
+}
+
 .navbar .ul div a {
     color: white;
-    font-size: 30px;
+    font-size: 20px;
+    text-decoration: none;
+   
+}
+
+.navbar .ul div a:hover {
+    color: #4CAF50;
+    font-size: 20px;
     text-decoration: none;
    
 }
@@ -47,34 +56,40 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 .product-list {
     display: flex;
     flex-wrap: wrap;
     gap: 50px;
-    /* background-color: pink; */
-    /* justify-content: space-between; */
     padding: 20px;
     width: 100%;
     align-items: center;
     justify-content: center;
 }
 
+.category-title{
+    margin: 30px;
+    background-color: #425c4bcc ;
+    color: #fff;
+    padding: 10px;
+    font-size: 18px;
+}
+
 /* Product Card */
 .product-card {
-    flex: 0 0 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap */
-    max-width: calc(26.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap */
+    flex: 0 0 calc(33.33% - 20px); 
+    max-width: calc(26.33% - 20px); 
     margin-bottom: 20px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #e41313;
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: center;
     position: relative;
-    
     gap: 20px;
 }
 
-/* Pseudo-classes - Hover effect on product button */
+
 .product-card:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
@@ -94,7 +109,7 @@ body {
 
 .product-image {
     max-width: 100%;
-    height: 200px; /* Adjust height for better consistency */
+    height: 270px; 
 }
 
 .product-button {
@@ -147,8 +162,8 @@ body {
 }
 
 .tag img {
-    height: 70px;
-    width: 70px;
+    height: 50px;
+    width: 50px;
     border-radius: 70%;
     
 }
@@ -158,15 +173,21 @@ body {
     align-items: center;
     justify-content: center;
     width: 650px;
-    font-size: 19px;
+    font-size: 20px;
 }
+
+.link-nav{
+    font-size: 20px;
+}
+
 .cart{
     color: white;
     display: flex;
+    justify-content: flex-end;
 }
+
 .cart_quantity_count{
     margin-top: 16px;
-    /* background-color: red; */
     margin-left: 27px;
     position: absolute;
     font-size: 29px;
