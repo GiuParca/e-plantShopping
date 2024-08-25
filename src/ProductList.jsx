@@ -15,6 +15,9 @@ import lavenderImg from './images/lavender.jpg';
 import rosemaryImg from './images/rosemary.jpg';
 import hyacinthImg from './images/hyacinth.jpg';
 import lemonBalmImg from './images/lemon-balm.jpg';
+import oreganoImg from './images/oregano.jpg';
+import marigoldImg from './images/marigold.jpg';
+import geranimusImg from './images/geraniums.jpg';
 
 function ProductList() {
     const dispatch = useDispatch();
@@ -112,20 +115,20 @@ function ProductList() {
             plants: [
                 {
                     name: "oregano",
-                    image: "https://cdn.pixabay.com/photo/2015/05/30/21/20/oregano-790702_1280.jpg",
-                    description: "The oregano plants contains compounds that can deter certain insects.",
+                    image: oreganoImg,
+                    description: "Contains compounds that can deter insects.",
                     cost: "$10"
                 },
                 {
                     name: "Marigold",
-                    image:"https://cdn.pixabay.com/photo/2022/02/22/05/45/marigold-7028063_1280.jpg",
-                    description: "Natural insect repellent, also adds color to the garden.",
+                    image: marigoldImg,
+                    description: "Natural insect repellent.",
                     cost: "$8"
                 },
                 {
                     name: "Geraniums",
-                    image: "https://cdn.pixabay.com/photo/2012/04/26/21/51/flowerpot-43270_1280.jpg",
-                    description: "Known for their insect-repelling properties while adding a pleasant scent.",
+                    image: geranimusImg,
+                    description: "Known for their insect-repelling properties.",
                     cost: "$20"
                 },
                 {
@@ -136,7 +139,7 @@ function ProductList() {
                 },
                 {
                     name: "Lavender",
-                    image: "https://images.unsplash.com/photo-1611909023032-2d6b3134ecba?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    image: lavenderImg,
                     description: "Calming scent, used in aromatherapy.",
                     cost: "$20"
                 },
