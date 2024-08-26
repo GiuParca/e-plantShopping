@@ -3,20 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addItem, removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
 
+// Selectors to retrieve data from the Redux store
+const selectTotalCost = (state) => 
+  state.cart.items.reduce((total, item) => total + parseFloat(item.cost) * item.quantity, 0);
+
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
+  const totalCost = useSelector(selectTotalCost); // Use the selector for total cost
   const dispatch = useDispatch();
 
-  // Function to convert cost from string to number
-  const parseCost = (cost) => parseFloat(cost);
-
-  const calculateTotalAmount = () => {
-    let totalAmount = 0;
-    cart.forEach(item => {
-      totalAmount += parseCost(item.cost) * item.quantity; // Convert cost to number
-    });
-    return totalAmount.toFixed(2);
-  };
+  const formatCost = (cost) => parseFloat(cost).toFixed(2);
 
   const handleContinueShopping = (e) => {
     e.preventDefault();
@@ -39,20 +35,20 @@ const CartItem = ({ onContinueShopping }) => {
     dispatch(removeItem(item.id));
   };
 
-  const calculateTotalCost = (item) => {
-    return (parseCost(item.cost) * item.quantity).toFixed(2); // Convert cost to number
+  const calculateTotalCostForItem = (item) => {
+    return formatCost(parseFloat(item.cost) * item.quantity);
   };
 
   return (
     <div className="cart-container">
-      <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
+      <h2 style={{ color: 'black' }}>Total Cart Amount: ${formatCost(totalCost)}</h2>
       <div>
         {cart.map(item => (
           <div className="cart-item" key={item.id}>
             <img className="cart-item-image" src={item.image} alt={item.name} />
             <div className="cart-item-details">
               <div className="cart-item-name">{item.name}</div>
-              <div className="cart-item-cost">${parseCost(item.cost).toFixed(2)}</div> {/* Convert and format cost */}
+              <div className="cart-item-cost">${formatCost(item.cost)}</div>
               <div className="cart-item-quantity">
                 <button
                   className="cart-item-button cart-item-button-dec"
@@ -68,7 +64,7 @@ const CartItem = ({ onContinueShopping }) => {
                   +
                 </button>
               </div>
-              <div className="cart-item-total">Total: ${calculateTotalCost(item)}</div>
+              <div className="cart-item-total">Total: ${calculateTotalCostForItem(item)}</div>
               <button className="cart-item-delete" onClick={() => handleRemove(item)}>
                 Delete
               </button>

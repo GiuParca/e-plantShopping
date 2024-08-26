@@ -32,6 +32,7 @@ body {
 #logo{
     height: 50px;
     width: 50px;
+    margin-left: 0;
 }
 
 .navbar .ul div a {
@@ -52,7 +53,7 @@ body {
 .product-grid {
     display:flex;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     align-items: center;
     justify-content: center;
 }
@@ -63,16 +64,17 @@ body {
     gap: 50px;
     padding: 20px;
     width: 100%;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .category-title{
-    margin: 30px;
-    background-color: #425c4bcc ;
+    margin: 40px;
+    text-align: center;
+    background-color: #2e6b30 ;
     color: #fff;
     padding: 10px;
-    font-size: 18px;
+    font-size: 20px;
+    width: 100%;
 }
 
 /* Product Card */
@@ -110,6 +112,10 @@ body {
 .product-image {
     max-width: 100%;
     height: 270px; 
+}
+
+.product-title, .product-description, .product-price {
+    margin: 10px 0;
 }
 
 .product-button {
@@ -177,13 +183,14 @@ body {
 }
 
 .link-nav{
-    font-size: 20px;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .cart{
     color: white;
-    display: flex;
-    justify-content: flex-end;
+    margin-right: 130px; 
+    padding: 0;
 }
 
 .cart_quantity_count{
@@ -233,7 +240,7 @@ body {
   }
   
   .product-button:hover {
-    background-color: #45a049;
+    background-color: #2e6b30;
   }
   
   .product-button.added-to-cart {
