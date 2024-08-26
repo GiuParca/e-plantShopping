@@ -22,7 +22,8 @@ import echinaceaImg from './images/echinacea.jpg';
 
 function ProductList() {
     const dispatch = useDispatch();
-    const totalQuantity = useSelector((state) => state.cart.items.reduce((total, item) => total + item.quantity, 0));
+    const cartItems = useSelector((state) => state.cart.items);
+    const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
     const [showCart, setShowCart] = useState(false);
     const [showPlants, setShowPlants] = useState(false);
@@ -134,7 +135,7 @@ function ProductList() {
                     <div className='link-nav'>
                         <a href="#" onClick={handlePlantsClick} style={styleA}>Plants</a>
                     </div>
-                    <div>
+                    <div className="cart-container">
                         <a href="#" onClick={handleCartClick} style={styleA}>
                             <h1 className='cart'>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" height="50" width="50">
@@ -143,10 +144,10 @@ function ProductList() {
                                     <circle cx="184" cy="216" r="12"></circle>
                                     <path d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8" fill="none" stroke="#faf9f9" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path>
                                 </svg>
+                                <span className="cart-quantity-bubble">{totalQuantity}</span>
                             </h1>
                         </a>
                     </div>
-                    <span className="cart-quantity">{totalQuantity}</span>
                 </div>
             </div>
             {!showCart ? (
@@ -181,3 +182,4 @@ function ProductList() {
 }
 
 export default ProductList;
+
