@@ -7,9 +7,7 @@ const CartItem = ({ onContinueShopping }) => {
     const cart = useSelector(state => state.cart.items);
     const dispatch = useDispatch();
 
-
     const formatCost = (cost) => parseFloat(cost).toFixed(2);
-
 
     const calculateTotalAmount = () => {
         let totalAmount = 0;
@@ -19,7 +17,6 @@ const CartItem = ({ onContinueShopping }) => {
         });
         return formatCost(totalAmount);
     };
-
 
     const calculateTotalQuantity = () => {
         return cart.reduce((total, item) => total + item.quantity, 0);
@@ -49,6 +46,10 @@ const CartItem = ({ onContinueShopping }) => {
     const calculateTotalCost = (item) => {
         const cost = parseFloat(item.cost.replace('$', ''));
         return formatCost(cost * item.quantity);
+    };
+
+    const handleCheckout = () => {
+        alert("Coming soon...");
     };
 
     return (
@@ -91,7 +92,7 @@ const CartItem = ({ onContinueShopping }) => {
             <div className="continue_shopping_btn">
                 <button className="get-started-button" onClick={handleContinueShopping}>Continue Shopping</button>
                 <br />
-                <button className="get-started-button1">Checkout</button>
+                <button className="get-started-button1" onClick={handleCheckout}>Checkout</button>
             </div>
             <div className="cart-summary">
                 <div className="total-items">Total Items: {calculateTotalQuantity()}</div>
@@ -101,6 +102,7 @@ const CartItem = ({ onContinueShopping }) => {
 };
 
 export default CartItem;
+
 
 
 
