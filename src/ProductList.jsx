@@ -26,44 +26,44 @@ function ProductList() {
     const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
     const [showCart, setShowCart] = useState(false);
-    const [showPlants, setShowPlants] = useState(false);
+    const [showPlants, setShowPlants] = useState(true);
     const [addedToCart, setAddedToCart] = useState({});
 
     const plantsArray = [
         {
             category: "Air Purifying Plants",
             plants: [
-                { name: "Snake Plant", image: snakePlantImg, description: "Produces oxygen, improves air quality.", cost: "$15" },
-                { name: "Monstera adansonii", image: monsteraImg, description: "Absorbs toxins, releases fresh oxygen.", cost: "$12" },
-                { name: "Peace Lily", image: peaceLilyImg, description: "Removes mold spores, purifies the air.", cost: "$18" },
-                { name: "Boston Fern", image: bostonFernImg, description: "Adds humidity and removes toxins.", cost: "$20" }
+                { id: 1, name: "Snake Plant", image: snakePlantImg, description: "Produces oxygen, improves air quality.", cost: "$15" },
+                { id: 2, name: "Monstera adansonii", image: monsteraImg, description: "Absorbs toxins, releases fresh oxygen.", cost: "$12" },
+                { id: 3, name: "Peace Lily", image: peaceLilyImg, description: "Removes mold spores, purifies the air.", cost: "$18" },
+                { id: 4, name: "Boston Fern", image: bostonFernImg, description: "Adds humidity and removes toxins.", cost: "$20" }
             ]
         },
         {
             category: "Aromatic Fragrant Plants",
             plants: [
-                { name: "Lavender", image: lavenderImg, description: "Calming scent, used in aromatherapy.", cost: "$20" },
-                { name: "Jasmine", image: jasmineImg, description: "Sweet fragrance, promotes relaxation.", cost: "$18" },
-                { name: "Rosemary", image: rosemaryImg, description: "Invigorating scent, popular in cooking.", cost: "$15" },
-                { name: "Mint", image: "https://cdn.pixabay.com/photo/2016/01/07/18/16/mint-1126282_1280.jpg", description: "Refreshing aroma, also used in teas.", cost: "$12" }
+                { id: 5, name: "Lavender", image: lavenderImg, description: "Calming scent, used in aromatherapy.", cost: "$20" },
+                { id: 6, name: "Jasmine", image: jasmineImg, description: "Sweet fragrance, promotes relaxation.", cost: "$18" },
+                { id: 7, name: "Rosemary", image: rosemaryImg, description: "Invigorating scent, popular in cooking.", cost: "$15" },
+                { id: 8, name: "Mint", image: "https://cdn.pixabay.com/photo/2016/01/07/18/16/mint-1126282_1280.jpg", description: "Refreshing aroma, also used in teas.", cost: "$12" }
             ]
         },
         {
             category: "Insect Repellent Plants",
             plants: [
-                { name: "Oregano", image: oreganoImg, description: "Can deter insects and certain pests.", cost: "$10" },
-                { name: "Marigold", image: marigoldImg, description: "The smell is a good fly-repellent plant.", cost: "$8" },
-                { name: "Geraniums", image: geranimusImg, description: "Insect-repelling properties.", cost: "$20" },
-                { name: "Basil", image: basilImg, description: "Repels flies and mosquitoes.", cost: "$9" }
+                { id: 9, name: "Oregano", image: oreganoImg, description: "Can deter insects and certain pests.", cost: "$10" },
+                { id: 10, name: "Marigold", image: marigoldImg, description: "The smell is a good fly-repellent plant.", cost: "$8" },
+                { id: 11, name: "Geraniums", image: geranimusImg, description: "Insect-repelling properties.", cost: "$20" },
+                { id: 12, name: "Basil", image: basilImg, description: "Repels flies and mosquitoes.", cost: "$9" }
             ]
         },
         {
             category: "Medicinal Plants",
             plants: [
-                { name: "Aloe Vera", image: aloeVeraImg, description: "Soothing gel used for skin ailments.", cost: "$14" },
-                { name: "Peppermint", image: peppermintImg, description: "Relieves digestive issues, headaches.", cost: "$13" },
-                { name: "Chamomile", image: chamomileImg, description: "Soothes anxiety and promotes sleep.", cost: "$15" },
-                { name: "Echinacea", image: echinaceaImg, description: "Treatment for cold and other infections.", cost: "$9" }
+                { id: 13, name: "Aloe Vera", image: aloeVeraImg, description: "Soothing gel used for skin ailments.", cost: "$14" },
+                { id: 14, name: "Peppermint", image: peppermintImg, description: "Relieves digestive issues, headaches.", cost: "$13" },
+                { id: 15, name: "Chamomile", image: chamomileImg, description: "Soothes anxiety and promotes sleep.", cost: "$15" },
+                { id: 16, name: "Echinacea", image: echinaceaImg, description: "Treatment for cold and other infections.", cost: "$9" }
             ]
         }
     ];
@@ -94,6 +94,7 @@ function ProductList() {
     const handleCartClick = (e) => {
         e.preventDefault();
         setShowCart(true);
+        setShowPlants(false);
     };
 
     const handlePlantsClick = (e) => {
@@ -105,20 +106,22 @@ function ProductList() {
     const handleContinueShopping = (e) => {
         e.preventDefault();
         setShowCart(false);
+        setShowPlants(true);
     };
 
     const handleAddToCart = (product) => {
         dispatch(addItem(product));
         setAddedToCart((prevState) => ({
             ...prevState,
-            [product.name]: true,
+            [product.id]: true,
         }));
+
         setTimeout(() => {
             setAddedToCart((prevState) => ({
                 ...prevState,
-                [product.name]: false,
+                [product.id]: false,
             }));
-        }, 2000); // Reset after 2 seconds
+        }, 2000);
     };
 
     return (
@@ -156,17 +159,17 @@ function ProductList() {
                         <div key={index}>
                             <h1 className="category-title">{category.category}</h1>
                             <div className='product-list'>
-                                {category.plants.map((plant, plantIndex) => (
-                                    <div className='product-cart' key={plantIndex}>
+                                {category.plants.map((plant) => (
+                                    <div className='product-cart' key={plant.id}>
                                         <img className='product-image' src={plant.image} alt={plant.name} />
                                         <div className='product-title'>{plant.name}</div>
                                         <div className='product-description'>{plant.description}</div>
                                         <div className='product-price'>{plant.cost}</div>
                                         <button
-                                            className={`product-button ${addedToCart[plant.name] ? 'added' : ''}`}
+                                            className={`product-button ${addedToCart[plant.id] ? 'added' : ''}`}
                                             onClick={() => handleAddToCart(plant)}
                                         >
-                                            {addedToCart[plant.name] ? 'Added!' : 'Add to Cart'}
+                                            {addedToCart[plant.id] ? 'Added!' : 'Add to Cart'}
                                         </button>
                                     </div>
                                 ))}
@@ -182,4 +185,6 @@ function ProductList() {
 }
 
 export default ProductList;
+
+
 
